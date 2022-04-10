@@ -1,25 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import TodoList from './components/TodoList';
+import Todo from './components/Todo';
+import { IsState } from './interfaces';
+
 
 function App() {
+  const [people, setPeople] = useState<IsState['people']>([
+    {
+      name: 'Ashfika Lira',
+      url: 'https://i.ibb.co/3hD5DDm/rsz-34703-1.jpg',
+      age: 22,
+      note: "Likes Music"
+    }
+  ]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <h1>Welcome to Keep Notes</h1>
+      <Todo people={people}></Todo>
+      <TodoList people={people} setPeople={setPeople}></TodoList>
+    </div >
   );
 }
 
